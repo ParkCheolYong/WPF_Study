@@ -37,7 +37,6 @@
                                       Height="35"
                                       WaterMarkText ="이메일을 입력하세요"
                                       IsEditable="True"
-                                      Validating="True"
                                       ItemsSource="{Binding Emails}"/>
             <controls:PasswordBoxControl Background="White"
                                          WaterMarkText="비밀번호를 입력하세요."

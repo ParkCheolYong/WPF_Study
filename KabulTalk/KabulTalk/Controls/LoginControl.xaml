@@ -33,11 +33,12 @@
         <!--Body-->
         <StackPanel Grid.Row="1"
                     Margin="30 10">
-            <controls:TextBoxControl Background="White" 
-                                     Height="35"
-                                     WaterMarkText="이메일을 입력하세요."
-                                     Validating="False"/>
-            <!--<ComboBox Height="{StaticResource ElementHeight}"/>-->
+            <controls:ComboBoxControl Background="White"
+                                      Height="35"
+                                      WaterMarkText ="이메일을 입력하세요"
+                                      IsEditable="True"
+                                      Validating="True"
+                                      ItemsSource="{Binding Emails}"/>
             <controls:PasswordBoxControl Background="White"
                                          WaterMarkText="비밀번호를 입력하세요."
                                          Height="{StaticResource ElementHeight}"/>

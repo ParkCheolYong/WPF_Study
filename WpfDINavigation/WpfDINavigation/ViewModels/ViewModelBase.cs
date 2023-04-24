@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WpfDINavigation.ViewModels
 {
-    public class ViewModelsBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

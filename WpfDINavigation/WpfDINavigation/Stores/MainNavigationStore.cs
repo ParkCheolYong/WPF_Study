@@ -15,7 +15,8 @@ namespace WpfDINavigation.Stores
 		public INotifyPropertyChanged? CurrentViewModel
 		{
 			get { return _currentViewModel; }
-			set { 
+			set 
+			{ 
 				_currentViewModel = value;
 				CurrentViewModelChanged?.Invoke();
 				_currentViewModel = null;

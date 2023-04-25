@@ -6,6 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfDINavigation.Services;
+using WpfDINavigation.Stores;
 using WpfDINavigation.ViewModels;
 using WpfDINavigation.Views;
 
@@ -22,8 +24,17 @@ namespace WpfDINavigation
         {
             var services = new ServiceCollection();
 
+            // stores
+            services.AddSingleton<MainNavigationStore>();
+
+            // services
+            services.AddSingleton<INavigationService, NavigationService>();
+
             // ViewModels
             services.AddSingleton<MainViewModel>();
+            services.AddSingleton<LoginViewModel>();
+            services.AddSingleton<SignupViewModel>();
+            services.AddSingleton<TestViewModel>();
 
             // Views
             services.AddSingleton(s => new MainView() 

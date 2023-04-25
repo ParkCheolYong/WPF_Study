@@ -22,7 +22,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Command="{Binding ToSingupCommand}" 
+            <Button Command="{Binding ToSignupCommand}" 
                     Content="ToSignup" Margin="5"/>
             <Button Command="{Binding ToTestCommand}" 
                     Grid.Column="1"

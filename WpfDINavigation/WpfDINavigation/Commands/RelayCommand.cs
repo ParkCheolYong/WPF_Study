@@ -11,7 +11,6 @@ namespace WpfDINavigation.Commands
     {
         private readonly Action<T>? _execute;
         private readonly Predicate<T>? _canExecute;
-       
 
         public RelayCommand(Action<T>? execute, Predicate<T>? canExecute = null)
         {
@@ -28,13 +27,11 @@ namespace WpfDINavigation.Commands
         public bool CanExecute(object? parameter)
         {
             return _canExecute?.Invoke((T)parameter!) ?? true;
-
         }
 
         public void Execute(object? parameter)
         {
-            _execute?.Invoke((T)parameter);
-
+            _execute?.Invoke((T)parameter!);
         }
     }
 }

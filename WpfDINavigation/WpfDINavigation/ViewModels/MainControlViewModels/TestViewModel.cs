@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using WpfDINavigation.Commands;
 using WpfDINavigation.Services;
 
@@ -27,10 +22,14 @@ namespace WpfDINavigation.ViewModels
         {
             _navigationService = navigationService;
 
+            LeftViewModel = (ViewModelBase)App.Current.Services.GetService(typeof(LeftViewModel))!;
+            RightViewModel = (ViewModelBase)App.Current.Services.GetService(typeof(RightViewModel))!;
             ToLoginCommand = new RelayCommand<object>(ToLogin);
             ToSignupCommand = new RelayCommand<object>(ToSignup);
         }
 
+        public ViewModelBase LeftViewModel { get; set; }
+        public ViewModelBase RightViewModel { get; set; }
         public ICommand ToLoginCommand { get; set; }
         public ICommand ToSignupCommand { get; set; }
     }

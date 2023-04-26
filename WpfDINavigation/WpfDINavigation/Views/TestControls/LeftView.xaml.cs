@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WpfDINavigation.Views
 {
     /// <summary>
-    /// LoginView.xaml에 대한 상호 작용 논리
+    /// LeftView.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class LeftView : UserControl
     {
-        public LoginView()
+        public LeftView()
         {
             InitializeComponent();
         }

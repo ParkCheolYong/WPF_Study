@@ -1,10 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using WpfDINavigation.Services;
 using WpfDINavigation.Stores;
@@ -26,6 +21,9 @@ namespace WpfDINavigation
 
             // stores
             services.AddSingleton<MainNavigationStore>();
+            services.AddSingleton<SignupStore>();
+            services.AddSingleton<LeftStore>();
+            services.AddSingleton<RightStore>();
 
             // services
             services.AddSingleton<INavigationService, NavigationService>();
@@ -35,6 +33,8 @@ namespace WpfDINavigation
             services.AddSingleton<LoginViewModel>();
             services.AddSingleton<SignupViewModel>();
             services.AddSingleton<TestViewModel>();
+            services.AddSingleton<LeftViewModel>();
+            services.AddSingleton<RightViewModel>();
 
             // Views
             services.AddSingleton(s => new MainView() 

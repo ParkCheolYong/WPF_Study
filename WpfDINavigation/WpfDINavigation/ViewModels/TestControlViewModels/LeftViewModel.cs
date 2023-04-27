@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using WpfDINavigation.Commands;
 using WpfDINavigation.Models;
 using WpfDINavigation.Stores;
 
@@ -11,6 +13,7 @@ namespace WpfDINavigation.ViewModels
     public class LeftViewModel : ViewModelBase
     {
         private readonly LeftStore _leftStore;
+        private readonly RightStore _rightStore;
         private string _id = "";
         private string _password = "";
         private string _name = "";
@@ -26,11 +29,33 @@ namespace WpfDINavigation.ViewModels
             Email = CurrentAccount.Email;
         }
 
-        public LeftViewModel(LeftStore leftStore)
+        private void SendAccountToRight(object _)
+        {
+            _rightStore.CurrentAccount = new Account
+            {
+                Id = Id,
+                Password = Password,
+                Name = Name,
+                Email = Email
+            };
+        }
+
+        private void CurrentAccountChanged(Account account)
+        {
+            Id = account.Id;
+            Password = account.Password;
+            Name = account.Name;
+            Email = account.Email;
+        }
+
+        public LeftViewModel(LeftStore leftStore, RightStore rightStore)
         {
             _leftStore = leftStore;
-
+            _rightStore = rightStore;
+            SendAccountToRightCommand = new RelayCommand<object>(SendAccountToRight);
             Initialize();
+
+            _leftStore.CurrentAccountChanged += CurrentAccountChanged;
         }
 
         public string Id
@@ -84,5 +109,7 @@ namespace WpfDINavigation.ViewModels
                 }
             }
         }
+
+        public ICommand SendAccountToRightCommand { get; set; }
     }
 }

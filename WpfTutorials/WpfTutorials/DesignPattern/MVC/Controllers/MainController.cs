@@ -42,9 +42,7 @@ namespace WpfTutorials.DesignPattern.MVC.Controllers
 
             if (!IsValidSave(person)) return false;
 
-            _personRepository.SaveOne(person);
-
-            return true;
+            return _personRepository.SaveOne(person);
         }
 
         internal void Cancel()
@@ -62,8 +60,7 @@ namespace WpfTutorials.DesignPattern.MVC.Controllers
 
         internal void Display()
         {
-            _personRepository.GetAll();
-            throw new NotImplementedException();
+            _view.ItemSource = _personRepository.GetAll()!;
         }
     }
 }

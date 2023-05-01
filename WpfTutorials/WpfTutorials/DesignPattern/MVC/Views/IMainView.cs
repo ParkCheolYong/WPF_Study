@@ -1,4 +1,5 @@
-﻿using WpfTutorials.DesignPattern.MVC.Controllers;
+﻿using System.Collections;
+using WpfTutorials.DesignPattern.MVC.Controllers;
 
 namespace WpfTutorials.DesignPattern.MVC.Views
 {
@@ -8,6 +9,8 @@ namespace WpfTutorials.DesignPattern.MVC.Views
         string Name { get; set; }
         string Sex { get; set; }
         int Age { get; set; }
+
+        IEnumerable ItemSource { get; set; }
 
         void SetController(MainController controller);
     }

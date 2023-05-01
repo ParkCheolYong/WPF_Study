@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections;
+using System.Windows;
 using System.Windows.Input;
 using WpfTutorials.DesignPattern.MVC.Controllers;
 
@@ -10,8 +12,6 @@ namespace WpfTutorials.DesignPattern.MVC.Views
     public partial class MainView : Window, IMainView
     {
         private MainController _controller = default!;
-
-        
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -38,12 +38,18 @@ namespace WpfTutorials.DesignPattern.MVC.Views
 
         private void ListViewItem_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            
+        }
 
+        private void MainViewLoaded(object sender, RoutedEventArgs e)
+        {
+            _controller.Display();
         }
 
         public MainView()
         {
             InitializeComponent();
+            Loaded += MainViewLoaded;
         }
 
         public int Id 
@@ -55,7 +61,7 @@ namespace WpfTutorials.DesignPattern.MVC.Views
             }
             set 
             {
-                txtId.Text = value.ToString();
+                txtId.Text = value == 0 ? "" : value.ToString();
             } 
         }
 
@@ -72,9 +78,11 @@ namespace WpfTutorials.DesignPattern.MVC.Views
             }
             set
             {
-                txtAge.Text = value.ToString();
+                txtAge.Text = value == 0 ? "" : value.ToString();
             }
         }
+
+        public IEnumerable ItemSource { get => lstView.ItemsSource; set => lstView.ItemsSource = value; }
 
         public void SetController(MainController controller)
         {

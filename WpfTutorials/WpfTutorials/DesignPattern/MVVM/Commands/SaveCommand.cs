@@ -43,7 +43,11 @@ namespace WpfTutorials.DesignPattern.MVVM.Commands
         private void Save()
         {
             var person = GetPerson();
-            _personRepository.SaveOne(person);
+            if (_personRepository.SaveOne(person))
+            {
+                _mainViewModel.Clear();
+                _mainViewModel.DisplayListView();
+            }
         }
 
         public SaveCommand(MainViewModel mainViewModel, IPersonRepository personRepository)

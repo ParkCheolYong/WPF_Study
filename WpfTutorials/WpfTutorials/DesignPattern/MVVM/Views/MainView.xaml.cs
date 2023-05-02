@@ -19,9 +19,19 @@ namespace WpfTutorials.DesignPattern.MVVM.Views
     /// </summary>
     public partial class MainView : Window
     {
+        private void Txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            BindingExpression be = ((TextBox)sender).GetBindingExpression(TextBox.TextProperty);
+            be.UpdateSource();
+        }
+
         public MainView()
         {
             InitializeComponent();
+            txtId.TextChanged += Txt_TextChanged;
+            txtName.TextChanged += Txt_TextChanged;
+            txtSex.TextChanged += Txt_TextChanged;
+            txtAge.TextChanged += Txt_TextChanged;
         }
     }
 }

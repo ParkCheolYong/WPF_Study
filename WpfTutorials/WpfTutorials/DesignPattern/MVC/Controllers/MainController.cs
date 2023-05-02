@@ -29,6 +29,14 @@ namespace WpfTutorials.DesignPattern.MVC.Controllers
             _ => true
         };
 
+        private void LoadPerson(Person? person = null)
+        {
+            _view.Id = person?.Id ?? 0;
+            _view.Name = person?.Name ?? "";
+            _view.Sex = person?.Sex ?? "";
+            _view.Age = person?.Age ?? 0;
+        }
+
         public MainController(IMainView view, IPersonRepository personRepository)
         {
             _view = view;
@@ -47,10 +55,7 @@ namespace WpfTutorials.DesignPattern.MVC.Controllers
 
         internal void Cancel()
         {
-            _view.Id = 0;
-            _view.Name = string.Empty;
-            _view.Sex = string.Empty;
-            _view.Age = 0;
+            LoadPerson();
         }
 
         internal bool Delete()
@@ -61,6 +66,11 @@ namespace WpfTutorials.DesignPattern.MVC.Controllers
         internal void Display()
         {
             _view.ItemSource = _personRepository.GetAll()!;
+        }
+
+        internal void LoadPerson(object dataContext)
+        {
+            LoadPerson(dataContext as Person);
         }
     }
 }

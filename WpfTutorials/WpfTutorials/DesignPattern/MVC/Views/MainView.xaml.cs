@@ -38,7 +38,8 @@ namespace WpfTutorials.DesignPattern.MVC.Views
 
         private void ListViewItem_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            
+            FrameworkElement? element = (FrameworkElement)e.OriginalSource;
+            _controller.LoadPerson(element.DataContext);
         }
 
         private void MainViewLoaded(object sender, RoutedEventArgs e)

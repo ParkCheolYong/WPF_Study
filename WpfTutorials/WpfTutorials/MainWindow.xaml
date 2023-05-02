@@ -26,5 +26,12 @@
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Top" 
                 Click="MVPBtn_Click"/>
+        <Button Content="MVVM패턴" 
+                Canvas.Left="10" 
+                Canvas.Top="82" 
+                RenderTransformOrigin="-0.239,0.408" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Click="MVVMBtn_Click"/>
     </Canvas>
 </Window>

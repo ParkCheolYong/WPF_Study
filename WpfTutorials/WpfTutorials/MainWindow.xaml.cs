@@ -39,5 +39,22 @@ namespace WpfTutorials
             _ = new MainPresenter(mainView, personRepository);
             mainView.Show();
         }
+
+        /// <summary>
+        /// MVVM
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MVVMBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var personRepository = new DesignPattern.Models.PersonRepository();
+
+            var mainView = new DesignPattern.MVVM.Views.MainView()
+            {
+                DataContext = new DesignPattern.MVVM.ViewModels.MainViewModel(personRepository)
+            };
+
+            mainView.Show();
+        }
     }
 }

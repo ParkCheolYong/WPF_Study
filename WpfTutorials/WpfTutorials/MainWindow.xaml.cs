@@ -1,7 +1,6 @@
 ﻿using System.Windows;
-using WpfTutorials.DesignPattern.Models;
 using WpfTutorials.DesignPattern.MVC.Controllers;
-using WpfTutorials.DesignPattern.MVC.Views;
+using WpfTutorials.DesignPattern.MVP.Presenters;
 
 namespace WpfTutorials
 {
@@ -15,11 +14,29 @@ namespace WpfTutorials
             InitializeComponent();
         }
 
+        /// <summary>
+        /// MVC
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MVCBtn_Click(object sender, RoutedEventArgs e)
         {
-            var mainView = new MainView();
-            var personRepository = new PersonRepository();
+            var mainView = new DesignPattern.MVC.Views.MainView();
+            var personRepository = new DesignPattern.Models.PersonRepository();
             _ = new MainController(mainView, personRepository);
+            mainView.Show();
+        }
+
+        /// <summary>
+        /// MVP
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MVPBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var mainView = new DesignPattern.MVP.Views.MainView();
+            var personRepository = new DesignPattern.Models.PersonRepository();
+            _ = new MainPresenter(mainView, personRepository);
             mainView.Show();
         }
     }

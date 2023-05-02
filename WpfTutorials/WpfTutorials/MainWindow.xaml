@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:WpfTutorials"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Window.Resources>
     <Canvas>
         <Button Content="MVC패턴" 
                 Canvas.Left="10" 
@@ -14,5 +19,12 @@
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Center" 
                 Click="MVCBtn_Click"/>
+        <Button Content="MVP패턴" 
+                Canvas.Left="10" 
+                Canvas.Top="46" 
+                RenderTransformOrigin="-0.239,0.408" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Click="MVPBtn_Click"/>
     </Canvas>
 </Window>

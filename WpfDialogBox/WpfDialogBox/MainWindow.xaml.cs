@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfControls;
+using WpfControls.Enums;
 
 namespace WpfDialogBox
 {
@@ -34,7 +36,19 @@ namespace WpfDialogBox
 
         private void btnMessageBox_Click(object sender, RoutedEventArgs e)
         {
-
+            var result = MessageBoxEx.Show("종료", "입력중인 데이터가 있습니다.\n어떻게 할까요?", "저장 후 종료", "저장 안하고 종료", "취소");
+            switch (result)
+            {
+                case MessageBoxExResult.Button1:
+                    MessageBox.Show("저장 후 종료 선택됨");
+                    break;
+                case MessageBoxExResult.Button2:
+                    MessageBox.Show("저장 안하고 종료 선택됨");
+                    break;
+                case MessageBoxExResult.Button3:
+                    MessageBox.Show("취소 선택됨");
+                    break;
+            }
         }
 
         private void btnInputBox_Click(object sender, RoutedEventArgs e)

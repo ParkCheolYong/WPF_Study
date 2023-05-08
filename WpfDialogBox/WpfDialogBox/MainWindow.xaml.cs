@@ -53,7 +53,15 @@ namespace WpfDialogBox
 
         private void btnInputBox_Click(object sender, RoutedEventArgs e)
         {
-
+            string? result = InputBoxEx.Show("메세지 테스트", "test");
+            if (result == null)
+            {
+                MessageBox.Show("취소");
+            }
+            else
+            {
+                MessageBox.Show(result);
+            }
         }
     }
 }

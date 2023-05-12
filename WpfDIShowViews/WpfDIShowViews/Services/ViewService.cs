@@ -15,6 +15,18 @@ namespace WpfDIShowViews.Services
     {
         private readonly IServiceProvider _serviceProvider;
 
+        private bool ActivateView<TView>() where TView : Window
+        {
+            IEnumerable<Window> windows = Application.Current.Windows.OfType<TView>();
+            if (windows.Any())
+            {
+                windows.ElementAt(0).Activate();
+                return true;
+            }
+
+            return false;
+        }
+
         public ViewService(IServiceProvider serviceProvider)
         {
             this._serviceProvider = serviceProvider;
@@ -43,7 +55,10 @@ namespace WpfDIShowViews.Services
 
         public void ShowSubView(SubData subData)
         {
-            ShowView<SubView, SubViewModel>(subData);
+            if (!ActivateView<SubView>())
+            {
+                ShowView<SubView, SubViewModel>(subData);
+            }
         }
     }
 }

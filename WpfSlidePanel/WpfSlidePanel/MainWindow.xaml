@@ -6,10 +6,34 @@
         xmlns:local="clr-namespace:WpfSlidePanel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Window.Resources>
+        <Storyboard x:Key="OpenStoryboard">
+            <DoubleAnimation Storyboard.TargetName="slider"
+                             Storyboard.TargetProperty="(Canvas.Left)"
+                             From="-300"
+                             To="0"
+                             Duration="0:0:0.3"/>
+        </Storyboard>
+        <Storyboard x:Key="CloseStoryboard">
+            <DoubleAnimation Storyboard.TargetName="slider"
+                             Storyboard.TargetProperty="(Canvas.Left)"
+                             From="00"
+                             To="-300"
+                             Duration="0:0:0.3"/>
+        </Storyboard>
+    </Window.Resources>
+    <Grid x:Name="parent">
         <!--SlidePanel-->
-        <Canvas/>
-        
+        <Grid x:Name="slidePanel">
+            <Grid x:Name="opacityGrid" Background="Gray" Opacity=".4" MouseUp="opacityGrid_MouseUp"/>
+            <Canvas>
+                <Border x:Name="slider" Canvas.Left="-300"
+                        Width="300" Height="{Binding ActualHeight,ElementName=parent}" Background="White">
+                    
+                </Border>
+            </Canvas>
+        </Grid>
+
         <!--Body-->
         <Grid Background="#F8F8F8">
             <Grid.RowDefinitions>

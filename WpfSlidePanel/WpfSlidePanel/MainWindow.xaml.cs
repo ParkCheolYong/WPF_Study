@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -27,7 +28,21 @@ namespace WpfSlidePanel
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Panel.SetZIndex(slidePanel, int.MaxValue);
+            Storyboard storyboard = (Storyboard)this.Resources["OpenStoryboard"];
+            storyboard.Begin();
+        }
 
+        private void opacityGrid_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Storyboard storyboard = (Storyboard)this.Resources["CloseStoryboard"];
+            storyboard.Completed += Storyboard_Completed;
+            storyboard.Begin();
+        }
+
+        private void Storyboard_Completed(object? sender, EventArgs e)
+        {
+            Panel.SetZIndex(slidePanel, int.MinValue);
         }
     }
 }
